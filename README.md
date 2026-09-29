@@ -2,6 +2,9 @@
 
 WebSH is a web-based SSH terminal. Server profiles stay encrypted at rest in the browser, and the backend establishes the live SSH session using a native Rust SSH client.
 
+>[!NOTE]
+> readme is deprecated and contains old info
+
 ## Tech Stack
 
 - **Frontend**: Nuxt 3 + TailwindCSS 4 + Xterm.js
