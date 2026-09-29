@@ -1,0 +1,47 @@
+services:
+    backend:
+        container_name: websh-backend
+        image: ghcr.io/dest4590/websh-backend:latest
+        ports:
+            - '5151:5151'
+        env_file:
+            - .env
+        expose:
+            - '5151'
+        restart: always
+        environment:
+            - RUST_LOG=info
+            - ALLOWED_ORIGIN=${ALLOWED_ORIGIN:-http://localhost:3000}
+            - AUTH_JWT_SECRET=${AUTH_JWT_SECRET}
+            - AUTH_DB_PATH=/app/data/websh-auth.sqlite
+            - AUTH_JWT_TTL_HOURS=${AUTH_JWT_TTL_HOURS:-12}
+        healthcheck:
+            test: ['CMD', 'curl', '-f', 'http://localhost:5151/health']
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 5s
+        volumes:
+            - ./data:/app/data
+            - ./nodes.yaml:/app/nodes.yaml:ro
+        networks:
+            - websh-network
+
+    frontend:
+        container_name: websh-frontend
+        image: ghcr.io/dest4590/websh-frontend:latest
+        ports:
+            - '3000:3000'
+        restart: always
+        environment:
+            - NUXT_PUBLIC_PROXY_BASE_URL=${NUXT_PUBLIC_PROXY_BASE_URL:-ws://localhost:5151/ws}
+            - NUXT_PUBLIC_API_BASE_URL=${NUXT_PUBLIC_API_BASE_URL:-http://localhost:5151}
+        depends_on:
+            backend:
+                condition: service_healthy
+        networks:
+            - websh-network
+
+networks:
+    websh-network:
+        external: true

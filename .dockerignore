@@ -1,0 +1,22 @@
+# Git
+.git
+.gitignore
+
+# Rust
+**/target
+**/*.rs.bk
+
+# Node
+**/node_modules
+**/.nuxt
+**/.output
+**/dist
+
+# Docker
+docker-compose.yml
+Dockerfile*
+data
+
+# OS
+.DS_Store
+Thumbs.db

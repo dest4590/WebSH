@@ -1,0 +1,23 @@
+{
+    "extends": "./.nuxt/tsconfig.json",
+    // https://nuxt.com/docs/guide/concepts/typescript
+    "compilerOptions": {
+        "baseUrl": ".",
+        "ignoreDeprecations": "6.0",
+        "types": ["vite/client"],
+        "paths": {
+            "~/*": ["./app/*"],
+            "@/*": ["./app/*"],
+            "#app": ["./.nuxt/imports.d.ts"],
+            "#app/*": ["./.nuxt/types/*"],
+            "#imports": ["./.nuxt/imports.d.ts"],
+            "#imports/*": ["./.nuxt/imports.d.ts"]
+        }
+    },
+    "include": [
+        "app/**/*",
+        ".nuxt/imports.d.ts",
+        ".nuxt/nuxt.d.ts",
+        ".nuxt/types/imports.d.ts"
+    ]
+}

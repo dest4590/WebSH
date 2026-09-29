@@ -1,0 +1,47 @@
+{
+    "name": "frontend",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "wasm:build": "cd ../wasm-ssh && wasm-pack build --target web --out-dir ../frontend/public/wasm",
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare",
+        "lint": "prettier --check \"**/*.{vue,ts}\"",
+        "format": "prettier --write \"**/*.{vue,ts}\"",
+        "type-check": "vue-tsc --noEmit"
+    },
+    "dependencies": {
+        "@codemirror/commands": "^6.10.3",
+        "@codemirror/language": "^6.12.3",
+        "@codemirror/legacy-modes": "^6.5.3",
+        "@codemirror/state": "^6.6.0",
+        "@codemirror/theme-one-dark": "^6.1.3",
+        "@codemirror/view": "^6.43.0",
+        "@noble/ciphers": "^2.2.0",
+        "@noble/hashes": "^2.2.0",
+        "@nuxtjs/sitemap": "^8.0.15",
+        "@nuxtjs/tailwindcss": "^6.14.0",
+        "@xterm/addon-fit": "^0.11.0",
+        "@xterm/addon-search": "^0.16.0",
+        "@xterm/addon-unicode11": "^0.9.0",
+        "@xterm/addon-web-fonts": "^0.1.0",
+        "@xterm/addon-web-links": "^0.12.0",
+        "@xterm/xterm": "6.1.0-beta.86",
+        "codemirror": "^6.0.2",
+        "dexie": "^4.4.2",
+        "nuxt": "^4.4.6",
+        "vue": "^3.5.34",
+        "vue-codemirror": "^6.1.1"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.3.0",
+        "@types/node": "^25.9.1",
+        "@vue/language-core": "^3.3.2",
+        "prettier": "^3.8.3",
+        "tailwindcss": "^4.3.0",
+        "vue-tsc": "^3.3.2"
+    }
+}
